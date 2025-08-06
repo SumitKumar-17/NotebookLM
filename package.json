@@ -10,14 +10,15 @@
   },
   "dependencies": {
     "@opendocsg/pdf2md": "^0.2.1",
+    "@react-pdf-viewer/core": "^3.12.0",
+    "@react-pdf-viewer/default-layout": "^3.12.0",
     "convex": "^1.25.4",
     "lucide-react": "^0.536.0",
     "next": "15.4.5",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-dropzone": "^14.3.8",
-    "react-markdown": "^10.1.0",
-    "react-pdf": "^10.0.1"
+    "react-markdown": "^10.1.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
