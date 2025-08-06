@@ -7,10 +7,14 @@ import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 import { Loader2, ZoomIn, ZoomOut } from 'lucide-react';
 
-// --- START: CORRECTED CODE ---
-// Use a stable CDN link for the PDF worker
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
-// --- END: CORRECTED CODE ---
+// Point to the worker file that will be in your "public" folder
+if (typeof window !== 'undefined') {
+  // Use the modern module worker, which is more compatible with Next.js
+  pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+    'pdfjs-dist/build/pdf.worker.min.mjs',
+    import.meta.url,
+  ).toString();
+}
 
 interface PdfViewerProps {
   storageId: Id<"_storage">;
