@@ -36,7 +36,7 @@ export default function Chat({ document, setPageNumber }: ChatProps) {
         await sendMessage({ message: currentMessage, documentId: document._id });
     } catch (error) {
         console.error("Failed to send message:", error);
-        setMessage(currentMessage); // Restore message on error
+        setMessage(currentMessage); 
     } finally {
         setIsSending(false);
     }
@@ -47,7 +47,7 @@ export default function Chat({ document, setPageNumber }: ChatProps) {
     const parts = text.split(citationRegex);
 
     return parts.map((part, index) => {
-        if (index % 2 === 1) { // This part is a page number
+        if (index % 2 === 1) { 
             const pageNum = parseInt(part, 10);
             return (
                 <button

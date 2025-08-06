@@ -8,7 +8,6 @@ import dynamic from "next/dynamic";
 import { Loader2 } from "lucide-react";
 import UploadScreen from "@/components/UploadScreen";
 
-// Dynamically import the entire DocumentScreen and disable server-side rendering.
 const DocumentScreen = dynamic(() => import('@/components/DocumentScreen'), {
     ssr: false,
     loading: () => (

@@ -4,9 +4,6 @@ import { Doc } from "../../convex/_generated/dataModel";
 import Chat from "./Chat";
 import { X, Loader2 } from "lucide-react";
 
-// --- START: CORRECTED CODE ---
-// Dynamically import the PdfViewer and disable server-side rendering (ssr: false)
-// This prevents browser-only APIs from being called on the server during the build.
 const PdfViewer = dynamic(() => import("./PdfViewer"), {
   ssr: false,
   loading: () => (

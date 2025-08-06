@@ -6,7 +6,6 @@ const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const EMBEDDING_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/embedding-001:embedContent?key=${GEMINI_API_KEY}`;
 const GENERATE_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${GEMINI_API_KEY}`;
 
-// Generates a vector embedding for a given text using Gemini.
 export async function embed(args: { text: string }): Promise<number[]> {
   const req = {
     model: "models/embedding-001",
@@ -24,7 +23,6 @@ export async function embed(args: { text: string }): Promise<number[]> {
   return data.embedding.values;
 }
 
-// Generates a chat response using Gemini based on a question and context.
 export const answer = action({
   args: {
     question: v.string(),
