@@ -15,7 +15,6 @@ const PdfViewer = dynamic(() => import("./PdfViewer"), {
     </div>
   ),
 });
-// --- END: CORRECTED CODE ---
 
 
 interface DocumentScreenProps {

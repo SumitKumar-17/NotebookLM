@@ -1,40 +1,14 @@
-"use client";
+import { Suspense } from 'react';
+import PageContent from '@/components/PageContent';
+import { Loader2 } from 'lucide-react';
 
-import { useQuery } from "convex/react";
-import { api } from "../../convex/_generated/api";
-import { Id } from "../../convex/_generated/dataModel";
-import UploadScreen from "@/components/UploadScreen";
-import DocumentScreen from "@/components/DocumentScreen";
-import { useSearchParams, useRouter } from 'next/navigation'
-
+// A server component that provides a Suspense boundary for the client component.
 export default function Home() {
-  const searchParams = useSearchParams()
-  const router = useRouter();
-  const documentId = searchParams.get('documentId') as Id<"documents"> | null;
-
-  // Function to update the URL with the new document ID
-  const setDocumentId = (id: Id<"documents">) => {
-    router.push(`/?documentId=${id}`);
-  };
-
-  // Function to clear the document ID from the URL
-  const clearDocumentId = () => {
-    router.push('/');
-  }
-
-  // Fetch document data only if documentId is present
-  const document = useQuery(
-    api.documents.getDocument,
-    documentId ? { id: documentId } : "skip"
-  );
-
   return (
     <main className="h-screen bg-gray-50 flex flex-col items-center justify-center text-gray-800">
-      {!documentId || !document ? (
-        <UploadScreen setDocumentId={setDocumentId} />
-      ) : (
-        <DocumentScreen document={document} clearDocumentId={clearDocumentId} />
-      )}
+      <Suspense fallback={<Loader2 className="w-12 h-12 animate-spin text-gray-500" />}>
+        <PageContent />
+      </Suspense>
     </main>
   );
 }
