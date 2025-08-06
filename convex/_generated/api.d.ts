@@ -19,6 +19,7 @@ import type * as documents from "../documents.js";
 import type * as files from "../files.js";
 import type * as gemini from "../gemini.js";
 import type * as http from "../http.js";
+import type * as parser from "../parser.js";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -35,6 +36,7 @@ declare const fullApi: ApiFromModules<{
   files: typeof files;
   gemini: typeof gemini;
   http: typeof http;
+  parser: typeof parser;
 }>;
 export declare const api: FilterApi<
   typeof fullApi,
