@@ -1,8 +1,22 @@
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { Doc } from "../../convex/_generated/dataModel";
-import PdfViewer from "./PdfViewer";
 import Chat from "./Chat";
-import { X } from "lucide-react";
+import { X, Loader2 } from "lucide-react";
+
+// --- START: CORRECTED CODE ---
+// Dynamically import the PdfViewer and disable server-side rendering (ssr: false)
+// This prevents browser-only APIs from being called on the server during the build.
+const PdfViewer = dynamic(() => import("./PdfViewer"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center">
+      <Loader2 className="w-8 h-8 animate-spin text-gray-400" />
+    </div>
+  ),
+});
+// --- END: CORRECTED CODE ---
+
 
 interface DocumentScreenProps {
     document: Doc<"documents">;
