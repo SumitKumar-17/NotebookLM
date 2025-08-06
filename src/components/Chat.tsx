@@ -59,7 +59,12 @@ export default function Chat({ document, setPageNumber }: ChatProps) {
                 </button>
             );
         } else {
-            return <ReactMarkdown key={index} className="prose prose-sm max-w-none">{part}</ReactMarkdown>;
+          
+        return (
+    <div key={index} className="prose prose-sm max-w-none">
+        <ReactMarkdown>{part}</ReactMarkdown>
+    </div>
+);   
         }
     });
   }
